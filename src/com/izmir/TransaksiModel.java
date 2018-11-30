@@ -317,16 +317,48 @@ public class TransaksiModel extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
+                String nama = this.jComboBoxItems.getSelectedItem().toString();
+        int jumlah = new Integer(this.jTextJumlah.getText());
+        if(Duplicate(nama)){
+            updateJumlah(nama, jumlah);
+        }else{
+            tabelModel.addRow(addItem(nama, jumlah));
+        }
+        this.belanja();
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
-
+        newTransaksi();
+        this.decId();
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-        
+         try{
+            // loop setiap tabel
+            for(int i = 0; i < tabelModel.getRowCount(); i++){
+                //menyimpan nama dan jumlah menjadi variable
+                String nama = tabelModel.getValueAt(i, 0).toString();
+                float harga = new Float(tabelModel.getValueAt(i, 1).toString());
+                int jumlah = new Integer(tabelModel.getValueAt(i, 2).toString());
+                this.keranjangBelanja.add(new Item(nama, harga, jumlah));
+            }
+            //Transaksi dengan kode dan comitted belanja
+            Transaksi transaksi = new Transaksi(this.kode, this.keranjangBelanja);
+            //menangani output transaksi
+            StringBuilder sbr = new StringBuilder();
+            //menambahkan hasil transaksi
+            sbr.append(transaksi.Pembayaran());
+            // memanggil dialog
+            JOptionPane.showMessageDialog(this, sbr, "Transaksi" , JOptionPane.INFORMATION_MESSAGE);
+            // melakukan transaksi baru
+            newTransaksi();
+            
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }                              
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
