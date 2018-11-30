@@ -12,15 +12,11 @@ import java.util.ArrayList;
  * @author Izmir
  */
 public class Transaksi {
-        //variable untuk menampilkan kode pembayaran 
-    private final String kode;
-    //item untuk menampilkan item apa saja yang dibeli
-    private  ArrayList<Item> items = new ArrayList();
-    //variable menampilkan total pembelian
-    private float total;
+    private final String kode; //variable untuk menampilkan kode pembayaran 
+    private  ArrayList<Item> items = new ArrayList(); //item untuk menampilkan item apa saja yang dibeli
+    private float total; //variable menampilkan total pembelian
     
-    //konstruktor
-
+    //membuat konstruktor
     public Transaksi() {
         this.kode = null;
     }
@@ -31,7 +27,7 @@ public class Transaksi {
         this.items = items;
     }
     
-    //total setter
+    //membuat setter dan getter yg dibutuhkan
     public void setTotal(){
         float total = 0;
         for(Item item : this.items){
@@ -39,7 +35,7 @@ public class Transaksi {
         }
         this.total = total;
     }
-    //output transaksi
+    //membuat method pembayaran
     public String Pembayaran(){
         setTotal();
         String obt = "";
