@@ -26,4 +26,9 @@ public class ComboBox {
         }
         return items;
     }
+    
+    // menambahkan item ke tabel item belanja
+    public void tambahItem(Item item){
+        this.items.add(item);
+    }
 }
