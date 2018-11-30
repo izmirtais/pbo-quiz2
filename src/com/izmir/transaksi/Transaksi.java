@@ -38,13 +38,13 @@ public class Transaksi {
     //membuat method pembayaran
     public String Pembayaran(){
         setTotal();
-        String obt = "";
-        obt += "Kode\t\t : " + this.kode + "\n";
-        obt += "Daftar Belanja : \n ";
+        String string = "";
+        string += "Kode\t\t : " + this.kode + "\n";
+        string += "Daftar Belanja : \n ";
         for (Item item : this.items){
-            obt += "\t" + item.getNama()  + "(" + item.getJumlah() + ") : " +item.getTotal() + "\n" ;   
+            string += "\t" + item.getNama()  + "(" + item.getJumlah() + ") : " +item.getTotal() + "\n" ;   
         }
-        obt += "Total\t\t : " + this.total;
-        return obt;
+        string += "Total\t\t : " + this.total;
+        return string;
     }  
 }
