@@ -10,20 +10,22 @@ package izmir.gui;
  * @author Izmir
  */
 public class Item {
-    private String nama;
-    private int jumlah;
-    private float harga;
+    private String nama; // variable menyimpan nama
+    private int jumlah; // variable menyimpan jumlah
+    private float harga; // variable menyimpan harga
     
     public Item(){
         
     }
 
+     // membuat konstruktor
     public Item(String nama, int jumlah, float harga) {
         this.nama = nama;
         this.jumlah = jumlah;
         this.harga = harga;
     }
-
+    
+    // membuat setter dan getter beserta toString
     public String getNama() {
         return nama;
     }
@@ -47,9 +49,15 @@ public class Item {
     public void setHarga(float harga) {
         this.harga = harga;
     }
+    
+        
+    public String toString(){
+        return this.nama;
+    }
 
-    @Override
-    public String toString() {
-        return "Item{" + "nama=" + nama + ", jumlah=" + jumlah + ", harga=" + harga + '}';
+    // menghitung hasil dari perkalian harga item dan jumlah
+    public float getTotal(){
+        return this.harga * this.jumlah;
     }
 }
+
