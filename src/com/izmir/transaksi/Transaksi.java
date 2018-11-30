@@ -37,14 +37,5 @@ public class Transaksi {
     }
     //membuat method pembayaran
     public String Pembayaran(){
-        setTotal();
-        String string = "";
-        string += "Kode\t\t : " + this.kode + "\n";
-        string += "Daftar Belanja : \n ";
-        for (Item item : this.items){
-            string += "\t" + item.getNama()  + "(" + item.getJumlah() + ") : " +item.getTotal() + "\n" ;   
-        }
-        string += "Total\t\t : " + this.total;
-        return string;
     }  
-}
+
